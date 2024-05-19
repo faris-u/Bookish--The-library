@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Book Details</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Custom CSS for styling -->
+    <style>
+        /* Customize the style as needed */
+         body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: white;
+        }
+
+        .navbar {
+            background-color: #800020;
+        }
+
+        .navbar a {
+            color: white !important;
+        }
+
+        .navbar a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .footer {
+            background-color: #800020;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .book-container {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        a{
+            color: white;
+        }
+
+
+        .book-image {
+            max-width: 200px;
+            height: auto;
+        }
+        .book-details {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="{{url_for('home')}}">Bookish</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="{{url_for('mystery')}}">Mystery</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url_for('romance')}}">Romance</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url_for('adventure')}}">Adventure</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url_for('anime')}}">Anime</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url_for('fiction')}}">Fiction</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        {% for book in book %}
+        <!-- Example book details -->
+        <div class="book-container mt-4">
+            <div class="col-md-12 col-sm-12 col-12 d-flex">
+                <!-- Book image column -->
+                <div class="m-2">
+                    <img src="{{ book.image }}" alt="Book Image" class="book-image">
+                </div>
+                <!-- Book details column -->
+                <div>
+                    <h3>{{ book.book_name }}</h3>
+                    <p><strong>Author:</strong> {{ book.author_name }}</p>
+                    <p><strong>Story:</strong></p>
+                    <p> {{ book.story }}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+        <!-- Add more book details here if needed -->
+
+    </div>
+    <footer class="footer">
+      <a href="https://www.instagram.com/faarishere/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.linkedin.com/in/ummer-faris-6592b0293/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <!-- Contact information -->
+    <a href="tel:+123456789">Call Us</a>
+    <a href="mailto:farisullat8899@gmail.com">Email</a>
+        <div>&copy; 2024 Bookish. All Rights Reserved.</div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
